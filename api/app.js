@@ -5,6 +5,7 @@ const port = process.env.port || 8080
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 const { errorHandling } = require("./middleware/ErrorHandling")
+const route = require("./controllers")
 
 app.use(
     cors(),

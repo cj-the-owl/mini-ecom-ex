@@ -11,7 +11,7 @@ class User {
         const {userEmail, userPassword} = req.body 
         const strQry = 
         `
-        Select firstName, lastName, userEmail, userPassword, userImg, userRole, DATE_FORMAT(joinDate, '%d-%m-%Y') As joinDate 
+        Select firstName, lastName, userEmail, userPassword, userImg, userRole 
         From Users
         where userEmail = '${userEmail}';
         `
@@ -49,7 +49,7 @@ class User {
     fetchUsers(req, res) {
         const strQry = 
         `
-        Select usersID, firstName, lastName, userEmail, userPassword, UserImg, userRole, DATE_FORMAT(joinDate, '%d-%m-%Y') As joinDate
+        Select usersID, firstName, lastName, userEmail, userPassword, UserImg, userRole
         From Users;
         `
         db.query(strQry, (err, data) => {
@@ -60,7 +60,7 @@ class User {
     fetchUser(req, res) {
         const strQry = 
         `
-        Select usersID, firstName, lastName, userEmail, userPassword, UserImg, userRole, DATE_FORMAT(joinDate, '%d-%m-%Y') As joinDate
+        Select usersID, firstName, lastName, userEmail, userPassword, UserImg, userRole
         From Users
         Where usersID = ?;
         `

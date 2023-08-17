@@ -1,6 +1,6 @@
 require("dotenv").config()
-
-const { createPool } = createPool ({
+const { createPool } = require("mysql")
+const connection = createPool ({
     host: process.env.dbHost,
     database: process.env.dbDatabase,
     user: process.env.dbUser,
