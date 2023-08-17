@@ -127,4 +127,76 @@ class User {
     }
 }
 
-module.exports = { User }
+class Products {
+    fetchProducts(req, res) {
+        const strQry =
+        `
+        SELECT productID, productName, productDescription, 
+        category, productPrice, productImg, quantity
+        FROM Products;
+        `;
+        db.query(strQry, (err, results) => {
+            if(err) throw err;
+            res.status(200).json({results: results})
+        });
+    }
+    fetchProduct(req, res) {
+        const strQry =
+        `
+        SELECT productID, productName, productDescription,
+        category, productPrice, productImg, quantity
+        FROM Products
+        WHERE productID = ?;
+        `;
+        db.query(strQry, [req.params.id], (err, results) => {
+            if(err) throw err;
+            res.status(200).json({results: results})
+        });
+    }
+    addProduct(req, res) {
+        const strQry =
+        `
+        INSERT INTO Products
+        SET ?;
+        `;
+        db.query(strQry, [req.body],
+            (err) => {
+                if (err) {
+                    res.status(400).json({err: "UNABLE TO INSERT A NEW RECORD."});
+                } else {
+                    res.status(200).json({msg: "PRODUCT SAVED"});
+                }
+            }
+        );
+    }
+    updateProduct(req, res) {
+        const strQry =
+        `
+        UPDATE Products
+        SET ?
+        WHERE productID = ?
+        `;
+        db.query(strQry, [req.body, req.params.id],
+            (err) => {
+                if (err) {
+                    res.status(400).json({err: "UNABLE TO UPDATE A RECORD."});
+                } else {
+                    res.status(200).json({msg: "PRODUCTS UPDATED"});
+                }
+            }
+        );
+    }
+    deleteProduct(req, res) {
+        const strQry =
+        `
+        DELETE FROM Products
+        WHERE productID = ?;
+        `;
+        db.query(strQry, [req.params.id], (err) => {
+            if (err) res.status(400).json({err: "THE RECORD WAS NOT FOUND."});
+            res.status(200).json({msg: "A PRODUCT WAS DELETED."});
+        })
+    }
+}
+
+module.exports = { User, Products }
