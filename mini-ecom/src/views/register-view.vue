@@ -13,7 +13,7 @@
     export default {
         data() {
             return {
-                firstname: "",
+                firstName: "",
                 email: "",
                 password: "",
             };
@@ -26,7 +26,7 @@
         method: {
             register() {
                 return this.$store.dispatch("register", {
-                    firstname: this.firstname,
+                    firstName: this.firstName,
                     email: this.email,
                     password: this.password
                 });

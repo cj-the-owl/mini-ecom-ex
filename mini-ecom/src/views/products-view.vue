@@ -11,11 +11,16 @@
     import cardComp from '@/components/card-comp.vue';
 
     export default {
-        mounted() {
-            this.$store.dispatch("getProducts")
-        },
+   components: {cardComp},
+   computed: {
+    products(){
+        return this.$store.state.products
+    },
+   },
+   mounted(){
+    this.$store.dispatch("fetchProducts")
+   }
 
-        components: {cardComp}
     }
 </script>
 

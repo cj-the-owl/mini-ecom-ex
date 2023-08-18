@@ -17,17 +17,22 @@ export default createStore({
 
   },
   actions: {
-    login: async (context, payload) => {
-      const { usrEmail, userPassword} = payload;
-
-      const response = await fetch(`https://hosted-api-nj1b.onrender.com/users?email=${userEmail}&password=${userPassword}`
-      );
-      const userData = await response.json();
-      context.commit("setUser", userData[0]);
+    async fetchUser(context) {
+      try{
+        let {user} = await (await fetch("https://hosted-api-nj1b.onrender.com/user")).json()
+        if (user) {
+          context.commit ("setUser", user )
+        } else {
+          alert("error")
+        }
+      }
+      catch(e) {
+        console.log(error)
+      }
     },
     register: (context, payload) => {
-      const { firstname, email, password} = payload;
-      fetch("https://hosted-api-nj1b.onrender.com/users", {
+      const { firstName, lastName, userEmail, userPassword} = payload;
+      fetch("https://hosted-api-nj1b.onrender.com/register", {
         method: "POST",
         body: JSON.stringify({
           firstname: firstname,
@@ -41,10 +46,18 @@ export default createStore({
       .then((response) => response.json())
       .then((json) => context.commit("setUser", json));
     },
-    getProducts: async (context) => {
-      fetch("")
-      .then((res) => res.json())
-      .then((products) => context.commit("setPRoducts", products));
+    async fetchProducts(context) {
+      try{
+        let {products} = await (await fetch("https://hosted-api-nj1b.onrender.com/products")).json()
+        if (products) {
+          context.commit ("setProducts", products )
+        } else {
+          alert("error")
+        }
+      }
+      catch(error) {
+        console.log(error)
+      }
     },
   },
   modules: {

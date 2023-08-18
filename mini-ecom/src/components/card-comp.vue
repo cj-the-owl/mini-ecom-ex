@@ -1,13 +1,16 @@
 <template>
-    <img :src="result.productImg" :alt="result.productName">
+
+    <img :src="product.productImg" :alt="product.productName">
     <h3>
-        {{ result.productName }}
+        {{ product.productName }}
     </h3>
-    <p>Price: R {{ result.productPrice }}</p>
+    <p>Price: R {{ product.productPrice }}</p>
 </template>
 
 <script>
+
     export default {
-        props: ["result"]
+         props: ["product"]
+       
     }
 </script>
