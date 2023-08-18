@@ -19,6 +19,6 @@ app.use(errorHandling)
 
 app.listen(port, () => {
     console.log(`
-    Server is running on ${port}`)
+    Server is running on Port: ${port}`)
 })
 

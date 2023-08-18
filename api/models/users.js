@@ -54,7 +54,7 @@ class User {
         `
         db.query(strQry, (err, data) => {
             if (err) throw err
-            else res.status(200).json({results: data})
+            else res.status(200).json(data)
         })
     }
     fetchUser(req, res) {
@@ -67,7 +67,7 @@ class User {
         db.query(strQry, [req.params.id], 
             (err, data) => {
             if (err) throw err
-            else res.status(200).json({results: data})
+            else res.status(200).json(data)
         })
     }
     async createUser(req, res) {
@@ -135,9 +135,9 @@ class Products {
         category, productPrice, productImg, quantity
         FROM Products;
         `;
-        db.query(strQry, (err, results) => {
+        db.query(strQry, (err, data) => {
             if(err) throw err;
-            res.status(200).json({results: results})
+            res.status(200).json(data)
         });
     }
     fetchProduct(req, res) {
@@ -148,9 +148,9 @@ class Products {
         FROM Products
         WHERE productID = ?;
         `;
-        db.query(strQry, [req.params.id], (err, results) => {
+        db.query(strQry, [req.params.id], (err, data) => {
             if(err) throw err;
-            res.status(200).json({results: results})
+            res.status(200).json(data)
         });
     }
     addProduct(req, res) {
