@@ -4,7 +4,8 @@ const connection = createPool ({
     host: process.env.dbHost,
     database: process.env.dbDatabase,
     user: process.env.dbUser,
-    password: process.env.dbPassword ,
+    password: process.env.dbPassword,
+    port: process.env.dbPort ,
     multipleStatements: true
 })
 
