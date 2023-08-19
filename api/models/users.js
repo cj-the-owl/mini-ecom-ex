@@ -54,7 +54,7 @@ class User {
         `
         db.query(strQry, (err, data) => {
             if (err) throw err
-            else res.status(200).json(data)
+            res.status(200).json(data)
         })
     }
     fetchUser(req, res) {
