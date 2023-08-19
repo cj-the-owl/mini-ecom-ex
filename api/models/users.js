@@ -53,8 +53,17 @@ class User {
         From Users;
         `
         db.query(strQry, (err, data) => {
-            if (err) throw err
-            res.status(200).json(data)
+            if(err) {
+                res.json({
+                    status: res.statusCode,
+                    msg: "An error occurred."
+                })
+            }else {
+                res.json({
+                    status: res.statusCode,
+                    data
+                })
+            }
         })
     }
     fetchUser(req, res) {
