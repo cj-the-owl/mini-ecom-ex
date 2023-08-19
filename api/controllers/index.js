@@ -3,7 +3,7 @@ const path = require("path")
 const bodyParser = require("body-parser")
 const route = express.Router()
 const {User, Products} = require("../models/users")
-const user = new User
+const user = new User()
 const product = new Products()
 
 // route.get("^/$|/mini-ecom-ex")
