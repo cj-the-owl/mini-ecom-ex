@@ -3,6 +3,7 @@
         <form @submit.prevent="login">
             <input type="text" v-model="email" placeholder="Enter email here">
             <input type="text" v-model="password" placeholder="Enter password here">
+            <button type="submit">Login</button>
         </form>
 
         <div v-if="user">

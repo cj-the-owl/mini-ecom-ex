@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     products: null,
-    user: null
+    user: null,
+    users: null
   },
   getters: {
   },
@@ -35,9 +36,9 @@ export default createStore({
       fetch("https://hosted-api-nj1b.onrender.com/register", {
         method: "POST",
         body: JSON.stringify({
-          firstname: firstname,
-          email: email,
-          password: password,
+          firstName: firstName,
+          userEmail: userEmail,
+          userPassword: userPassword,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -48,15 +49,15 @@ export default createStore({
     },
     async fetchProducts(context) {
       try{
-        let {products} = await (await fetch("https://hosted-api-nj1b.onrender.com/products")).json()
+        let products = await (await fetch("https://hosted-api-nj1b.onrender.com/products")).json()
         if (products) {
           context.commit ("setProducts", products )
         } else {
           alert("error")
         }
       }
-      catch(error) {
-        console.log(error)
+      catch(e) {
+        console.error(error)
       }
     },
   },

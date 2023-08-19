@@ -1,12 +1,12 @@
 <template>
     <form @submit.prevent="register">
         <input type="text" v-model="firstName" placeholder="Enter firstname here">
-        <input type="text" v-model="email" placeholder="Enter email here">
-        <input type="text" v-model="password" placeholder="Enter passwrod here">
+        <input type="text" v-model="userEmail" placeholder="Enter email here">
+        <input type="text" v-model="userPassword" placeholder="Enter passwrod here">
         <button type="submit">Register</button>
     </form>
 
-    <div v-if="user">Welcome {{ user.firstname }}</div>
+    <div v-if="user">Welcome {{ user.firstName }}</div>
 </template>
 
 <script>
@@ -14,8 +14,8 @@
         data() {
             return {
                 firstName: "",
-                email: "",
-                password: "",
+                userEmail: "",
+                userPassword: "",
             };
         },
         computed: {
@@ -27,8 +27,8 @@
             register() {
                 return this.$store.dispatch("register", {
                     firstName: this.firstName,
-                    email: this.email,
-                    password: this.password
+                    userEmail: this.userEmail,
+                    userPassword: this.userPassword
                 });
             },
         },
