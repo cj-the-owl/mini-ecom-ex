@@ -59,10 +59,7 @@ class User {
                     msg: "An error occurred."
                 })
             }else {
-                res.json({
-                    status: res.statusCode,
-                    data
-                })
+                res.json({data})
             }
         })
     }
